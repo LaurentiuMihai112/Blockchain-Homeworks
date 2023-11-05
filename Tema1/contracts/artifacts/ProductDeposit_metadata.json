@@ -1,0 +1,199 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_storageFee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxStorageVolume",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_storeAddress",
+						"type": "address"
+					}
+				],
+				"name": "authorizeStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "authorizedStores",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "_productId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "depositProduct",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxStorageVolume",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"name": "productDeposits",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "producer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "storageFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "_productId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ProductDeposit.sol": "ProductDeposit"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ProductDeposit.sol": {
+			"keccak256": "0x6720efd3a9c2ecae1497955d37383f40f8260b1055419c7ca673fa208d0dac45",
+			"urls": [
+				"bzz-raw://64eb7d2da14ba76527d7de5d3fe41ae92e4d789d14a54d66f550347efcaa5827",
+				"dweb:/ipfs/QmbA1woDbop2f6VW2ShCRN8sLHgMLaQD6DXVGWKYsKUphw"
+			]
+		},
+		"contracts/ProductIdentification.sol": {
+			"keccak256": "0x31400c714dd8f977d2b6329e059c44aeb19b500d2831ea9d9ce4fb6441c12687",
+			"urls": [
+				"bzz-raw://66cbb3a0cc6fe13bc07256181075f2ed76520aecbdc21ca12c9c37116117cf3b",
+				"dweb:/ipfs/QmexTzPbjChEMXnkZViu52o8EnPDTyhXZyG3T1Vz1Mao6M"
+			]
+		}
+	},
+	"version": 1
+}

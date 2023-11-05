@@ -1,0 +1,209 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_identificationContract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_depositContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_productId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_pricePerUnit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "addProductToStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_productId",
+						"type": "bytes32"
+					}
+				],
+				"name": "checkProductAvailability",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "depositContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "identificationContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_productId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_quantity",
+						"type": "uint256"
+					}
+				],
+				"name": "purchaseProduct",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_productId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_pricePerUnit",
+						"type": "uint256"
+					}
+				],
+				"name": "setProductPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "storeInventory",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "pricePerUnit",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ProductStore.sol": "ProductStore"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ProductIdentification.sol": {
+			"keccak256": "0x7ef8210a940a04e1d4938c8c2955a42b688c9927f8b0944e3db04febbb40842d",
+			"urls": [
+				"bzz-raw://c9d73b63d38df969ee947d30e5488d113c8e3682bf8a26f0761bd96d391eef28",
+				"dweb:/ipfs/QmaL2ieittZjfDEPDTiZAqoCFummRMDZ3dAWue6pytZ9Yo"
+			]
+		},
+		"contracts/ProductStore.sol": {
+			"keccak256": "0x22a1ceac7dffd6b1c03165f7511447c2e9d77d0634721b39c7214d08cec53eb6",
+			"urls": [
+				"bzz-raw://da47818724c5c6e701fd38f2974e488a49405fb848b75abb7fee2ddcf8a99295",
+				"dweb:/ipfs/QmaJgwLTzfkCawAZAWwhkpuJCSUhXWEFxZe1j3daB6JRY3"
+			]
+		}
+	},
+	"version": 1
+}
