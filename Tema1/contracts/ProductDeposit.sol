@@ -76,6 +76,8 @@ contract ProductDeposit {
         }
         else{
             //magazin
+            productIdentification.updateQuantity(_productId, -1 * int(_volume), msg.sender);
+            product.volume -= _volume;
         }
     }
 

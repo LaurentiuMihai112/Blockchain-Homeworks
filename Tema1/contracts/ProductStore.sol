@@ -31,7 +31,7 @@ contract ProductStore {
     }
 
     function addProductToStore(bytes4 _productId, uint _pricePerUnit, uint _quantity) public onlyAuthorizedProducer(_productId) {
-
+        products.push(Product(_productId, _pricePerUnit, _quantity, msg.sender));
     }
         
     function setProductPrice(bytes4 _productId, uint _pricePerUnit) public onlyAuthorizedProducer(_productId) {

@@ -199,6 +199,29 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "_id",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "int256",
+						"name": "_quantity",
+						"type": "int256"
+					},
+					{
+						"internalType": "address",
+						"name": "supplier",
+						"type": "address"
+					}
+				],
+				"name": "updateQuantity",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -229,10 +252,11 @@
 	},
 	"sources": {
 		"contracts/ProductIdentification.sol": {
-			"keccak256": "0x5df2fd53c52cf6f4b4c52dd723453f3cf0a42538bdfdf92680639bfcb7b68f1d",
+			"keccak256": "0xc2aa06f7f904653dd0c671032d7eb64346db3b297eceb4c42338b523dd7ae701",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://0a75c6d25db105e78f9c7ac9e1c47e4589600ebf13f46633ec099b57fdefeb0a",
-				"dweb:/ipfs/QmVJsSAKsZUfSewHbRyjTbs5HPJgQiaeXmsD74BufUi2Bu"
+				"bzz-raw://075e74af6da44e9119382acece2092618b2da79d5a99897d6c29eff22ec015c2",
+				"dweb:/ipfs/QmNxxZ6ZhKtfSRG5We6jobaZ1wizFipEkY8mvebNSDrFm5"
 			]
 		}
 	},

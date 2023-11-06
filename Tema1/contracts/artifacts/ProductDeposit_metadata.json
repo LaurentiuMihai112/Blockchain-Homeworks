@@ -126,6 +126,24 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "_productId",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_volume",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -156,17 +174,19 @@
 	},
 	"sources": {
 		"contracts/ProductDeposit.sol": {
-			"keccak256": "0xa85de84b7e2e9cb5aa282aae5ae6ac65e4f5c4d28e1fb11d2aec947d485132d1",
+			"keccak256": "0x3c3287a38d0974bd6dc69c1cc045351ecfcbd87574c767740f3c50a4093ef235",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://808555050b16c3719fe42cbc005a80e3b47531fafed02e2ea512be385dfbca51",
-				"dweb:/ipfs/QmRYD6fXNqYinmo4hTE3yQdwsTesCt5bStg6qfi5kYuGya"
+				"bzz-raw://30a8ccba626bcbd301541ef077e7d0671ff0d3326b8c419502f147587a321c0b",
+				"dweb:/ipfs/QmZKa7bmvFb6f4Hy4BFHUBeidUfuXF94pRQ231j1Cuhsjv"
 			]
 		},
 		"contracts/ProductIdentification.sol": {
-			"keccak256": "0x5df2fd53c52cf6f4b4c52dd723453f3cf0a42538bdfdf92680639bfcb7b68f1d",
+			"keccak256": "0xc2aa06f7f904653dd0c671032d7eb64346db3b297eceb4c42338b523dd7ae701",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://0a75c6d25db105e78f9c7ac9e1c47e4589600ebf13f46633ec099b57fdefeb0a",
-				"dweb:/ipfs/QmVJsSAKsZUfSewHbRyjTbs5HPJgQiaeXmsD74BufUi2Bu"
+				"bzz-raw://075e74af6da44e9119382acece2092618b2da79d5a99897d6c29eff22ec015c2",
+				"dweb:/ipfs/QmNxxZ6ZhKtfSRG5We6jobaZ1wizFipEkY8mvebNSDrFm5"
 			]
 		}
 	},
