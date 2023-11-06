@@ -20,35 +20,16 @@
 				"inputs": [
 					{
 						"internalType": "bytes4",
-						"name": "_productId",
+						"name": "_id",
 						"type": "bytes4"
 					}
 				],
-				"name": "getProducerAddress",
+				"name": "getProductInformation",
 				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
 					{
 						"internalType": "bytes4",
-						"name": "_productId",
-						"type": "bytes4"
-					}
-				],
-				"name": "getProductInfo",
-				"outputs": [
-					{
-						"internalType": "address",
 						"name": "",
-						"type": "address"
+						"type": "bytes4"
 					},
 					{
 						"internalType": "string",
@@ -59,25 +40,59 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_producerAddress",
-						"type": "address"
-					}
-				],
-				"name": "isProducerRegistered",
+				"inputs": [],
+				"name": "getProducts",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"components": [
+							{
+								"internalType": "bytes4",
+								"name": "id",
+								"type": "bytes4"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "volume",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "owner",
+								"type": "address"
+							}
+						],
+						"internalType": "struct ProductIdentification.Product[]",
 						"name": "",
-						"type": "bool"
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSuppliers",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
 					}
 				],
 				"stateMutability": "view",
@@ -100,81 +115,11 @@
 				"inputs": [
 					{
 						"internalType": "bytes4",
-						"name": "",
+						"name": "_id",
 						"type": "bytes4"
 					}
 				],
-				"name": "products",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "producer",
-						"type": "address"
-					},
-					{
-						"internalType": "bytes4",
-						"name": "productId",
-						"type": "bytes4"
-					},
-					{
-						"internalType": "string",
-						"name": "productName",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "volume",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_producerAddress",
-						"type": "address"
-					}
-				],
-				"name": "registerProducer",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "_productName",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_volume",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bytes4",
-						"name": "productId",
-						"type": "bytes4"
-					}
-				],
-				"name": "registerProduct",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "registeredProducers",
+				"name": "productExist",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -186,6 +131,31 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "registerProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registerSuppliers",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "registrationFee",
 				"outputs": [
@@ -193,6 +163,38 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "supplierIsRegistered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_supplier",
+						"type": "address"
+					}
+				],
+				"name": "supplierIsRegistered",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -227,10 +229,10 @@
 	},
 	"sources": {
 		"contracts/ProductIdentification.sol": {
-			"keccak256": "0x31400c714dd8f977d2b6329e059c44aeb19b500d2831ea9d9ce4fb6441c12687",
+			"keccak256": "0x5df2fd53c52cf6f4b4c52dd723453f3cf0a42538bdfdf92680639bfcb7b68f1d",
 			"urls": [
-				"bzz-raw://66cbb3a0cc6fe13bc07256181075f2ed76520aecbdc21ca12c9c37116117cf3b",
-				"dweb:/ipfs/QmexTzPbjChEMXnkZViu52o8EnPDTyhXZyG3T1Vz1Mao6M"
+				"bzz-raw://0a75c6d25db105e78f9c7ac9e1c47e4589600ebf13f46633ec099b57fdefeb0a",
+				"dweb:/ipfs/QmVJsSAKsZUfSewHbRyjTbs5HPJgQiaeXmsD74BufUi2Bu"
 			]
 		}
 	},

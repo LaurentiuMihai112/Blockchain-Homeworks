@@ -24,9 +24,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
+						"internalType": "bytes4",
 						"name": "_productId",
-						"type": "bytes32"
+						"type": "bytes4"
 					},
 					{
 						"internalType": "uint256",
@@ -47,12 +47,12 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
+						"internalType": "bytes4",
 						"name": "_productId",
-						"type": "bytes32"
+						"type": "bytes4"
 					}
 				],
-				"name": "checkProductAvailability",
+				"name": "checkAvailability",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -105,9 +105,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
+						"internalType": "bytes4",
 						"name": "_productId",
-						"type": "bytes32"
+						"type": "bytes4"
 					},
 					{
 						"internalType": "uint256",
@@ -123,9 +123,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "bytes32",
+						"internalType": "bytes4",
 						"name": "_productId",
-						"type": "bytes32"
+						"type": "bytes4"
 					},
 					{
 						"internalType": "uint256",
@@ -136,30 +136,6 @@
 				"name": "setProductPrice",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
-					}
-				],
-				"name": "storeInventory",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "pricePerUnit",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -191,17 +167,19 @@
 	},
 	"sources": {
 		"contracts/ProductIdentification.sol": {
-			"keccak256": "0x7ef8210a940a04e1d4938c8c2955a42b688c9927f8b0944e3db04febbb40842d",
+			"keccak256": "0xe5a8bb1b55eae9205920cc49157a72a216fefbb89101ed545140e1b0c017c14f",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://c9d73b63d38df969ee947d30e5488d113c8e3682bf8a26f0761bd96d391eef28",
-				"dweb:/ipfs/QmaL2ieittZjfDEPDTiZAqoCFummRMDZ3dAWue6pytZ9Yo"
+				"bzz-raw://54457ad473dddf96d50f738aacbcaa0ee5e1df201a516ed9cccb05996153f203",
+				"dweb:/ipfs/QmbFPHaxGpXU4qxHmzdcdYj6BsNo4b2bh11K8cbDGdKFrD"
 			]
 		},
 		"contracts/ProductStore.sol": {
-			"keccak256": "0x22a1ceac7dffd6b1c03165f7511447c2e9d77d0634721b39c7214d08cec53eb6",
+			"keccak256": "0x66ba0d646eca5dd517145d73e5bf98e8bc6311cd2f271e69f85af4f32a6fe88a",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://da47818724c5c6e701fd38f2974e488a49405fb848b75abb7fee2ddcf8a99295",
-				"dweb:/ipfs/QmaJgwLTzfkCawAZAWwhkpuJCSUhXWEFxZe1j3daB6JRY3"
+				"bzz-raw://ef32e9f9aab1a280dd7d5ef8f32e9398c1439082302ecc58d24a4140c3d74ab9",
+				"dweb:/ipfs/QmanBBLkKF7NH9vzuU2u4VFVRmR1qTBHz3Dm7iACBY88E7"
 			]
 		}
 	},

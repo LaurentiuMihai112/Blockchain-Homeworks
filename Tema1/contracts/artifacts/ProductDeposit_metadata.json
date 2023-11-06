@@ -8,13 +8,18 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_productIdentification",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "_storageFee",
+						"name": "_depositFeePerUnit",
 						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
-						"name": "_maxStorageVolume",
+						"name": "_maxVolume",
 						"type": "uint256"
 					}
 				],
@@ -22,58 +27,34 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_storeAddress",
-						"type": "address"
-					}
-				],
-				"name": "authorizeStore",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "authorizedStores",
+				"inputs": [],
+				"name": "currentVolume",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "bytes4",
-						"name": "_productId",
-						"type": "bytes4"
-					},
+				"inputs": [],
+				"name": "depositFeePerUnit",
+				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "_quantity",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "depositProduct",
-				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "maxStorageVolume",
+				"name": "maxVolume",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -98,44 +79,25 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "productIdentification",
+				"outputs": [
 					{
-						"internalType": "bytes4",
+						"internalType": "contract ProductIdentification",
 						"name": "",
-						"type": "bytes4"
+						"type": "address"
 					}
 				],
-				"name": "productDeposits",
-				"outputs": [
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "address",
-						"name": "producer",
+						"name": "_storeId",
 						"type": "address"
 					},
-					{
-						"internalType": "uint256",
-						"name": "quantity",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "storageFee",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
 					{
 						"internalType": "bytes4",
 						"name": "_productId",
@@ -143,11 +105,24 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "_quantity",
+						"name": "_volume",
 						"type": "uint256"
 					}
 				],
-				"name": "withdrawProduct",
+				"name": "registerProduct",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_storeId",
+						"type": "address"
+					}
+				],
+				"name": "registerStore",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -181,17 +156,17 @@
 	},
 	"sources": {
 		"contracts/ProductDeposit.sol": {
-			"keccak256": "0x6720efd3a9c2ecae1497955d37383f40f8260b1055419c7ca673fa208d0dac45",
+			"keccak256": "0xa85de84b7e2e9cb5aa282aae5ae6ac65e4f5c4d28e1fb11d2aec947d485132d1",
 			"urls": [
-				"bzz-raw://64eb7d2da14ba76527d7de5d3fe41ae92e4d789d14a54d66f550347efcaa5827",
-				"dweb:/ipfs/QmbA1woDbop2f6VW2ShCRN8sLHgMLaQD6DXVGWKYsKUphw"
+				"bzz-raw://808555050b16c3719fe42cbc005a80e3b47531fafed02e2ea512be385dfbca51",
+				"dweb:/ipfs/QmRYD6fXNqYinmo4hTE3yQdwsTesCt5bStg6qfi5kYuGya"
 			]
 		},
 		"contracts/ProductIdentification.sol": {
-			"keccak256": "0x31400c714dd8f977d2b6329e059c44aeb19b500d2831ea9d9ce4fb6441c12687",
+			"keccak256": "0x5df2fd53c52cf6f4b4c52dd723453f3cf0a42538bdfdf92680639bfcb7b68f1d",
 			"urls": [
-				"bzz-raw://66cbb3a0cc6fe13bc07256181075f2ed76520aecbdc21ca12c9c37116117cf3b",
-				"dweb:/ipfs/QmexTzPbjChEMXnkZViu52o8EnPDTyhXZyG3T1Vz1Mao6M"
+				"bzz-raw://0a75c6d25db105e78f9c7ac9e1c47e4589600ebf13f46633ec099b57fdefeb0a",
+				"dweb:/ipfs/QmVJsSAKsZUfSewHbRyjTbs5HPJgQiaeXmsD74BufUi2Bu"
 			]
 		}
 	},
