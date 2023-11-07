@@ -36,7 +36,7 @@ contract ProductDeposit {
         maxVolume = _maxVolume;
     }
 
-    function registerProduct(address _storeId, bytes4 _productId, uint _volume) external payable {
+    function registerProduct(bytes4 _productId, uint _volume) external payable {
         (bytes4 id, string memory name, uint volume, address owner) = productIdentification.getProductInformation(_productId);
 
         require(owner == msg.sender, "You are not allowed to add this product");
@@ -50,6 +50,7 @@ contract ProductDeposit {
         uint change = msg.value - fee;
 
         products.push(Product(id, name, _volume, owner));
+        currentVolume += _volume;
 
         payable(msg.sender).transfer(change);
         payable(owner).transfer(fee);
@@ -62,29 +63,34 @@ contract ProductDeposit {
         authorizedStores.push(AuthorizedStore(msg.sender,_storeId));
     }
 
-    function withdrawProduct(bytes4 _productId, uint _volume) public {
-        require(productIdentification.supplierIsRegistered(msg.sender),"You must be a registered supplier");
+    function withdrawProduct(bytes4 _productId, uint _volume) public returns (bool) {
+        // require(productIdentification.supplierIsRegistered(msg.sender),"You must be a registered supplier");
         require(productExists(_productId),"Product does not exist");
-        Product memory product = getProduct(_productId);
+        Product storage product = products[getProduct(_productId)];
         require(product.volume >= _volume,"Volume is bigger than the actual volume in storage");
-        bool isStore = isAuthorizedStrore(msg.sender);
-        bool isProducer = isAuthorizedStrore(msg.sender);
+        bool isStore = isAuthorizedStore(_productId, msg.sender);
+        bool isProducer = productIdentification.supplierIsRegistered(msg.sender);
         require(isProducer || isStore,"You are not authorized to withdraw this product");
+
+        currentVolume -= _volume;
+        
         if(isProducer){
             productIdentification.updateQuantity(_productId, int(_volume), msg.sender);
             product.volume -= _volume;
         }
         else{
             //magazin
-            productIdentification.updateQuantity(_productId, -1 * int(_volume), msg.sender);
             product.volume -= _volume;
+            // productIdentification.updateQuantity(_productId, -1 * int(_volume), msg.sender);
+            // product.volume -= _volume;
         }
+        return true;
     }
 
-    function getProduct(bytes4 _productId) private view returns (Product memory){
+    function getProduct(bytes4 _productId) private view returns (uint){
         for (uint i = 0; i < products.length; i++) {
             if (products[i].id == _productId) {
-                return products[i];
+                return i;
             }
         }
     }
@@ -98,18 +104,18 @@ contract ProductDeposit {
         return false;
     }
 
-    function isAuthorizedStrore(address sender) private view returns (bool){
-        for (uint i = 0; i < authorizedStores.length; i++) {
-            if (authorizedStores[i].producer == sender || authorizedStores[i].store == sender) {
-                return true;
+    function isAuthorizedStore(bytes4 _productId, address sender) private view returns (bool){
+        address _producer;
+
+        for (uint i = 0; i < products.length; i++) {
+            if (products[i].id == _productId) {
+                _producer = products[i].owner;
             }
         }
-        return false;
-    }
 
-    function isProductOwner(address sender,bytes4 _productId) private view returns (bool){
-        for (uint i = 0; i < products.length; i++) {
-            if (products[i].owner == sender && products[i].id == _productId) {
+
+        for (uint i = 0; i < authorizedStores.length; i++) {
+            if (authorizedStores[i].producer == _producer && authorizedStores[i].store == sender) {
                 return true;
             }
         }

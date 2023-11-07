@@ -76,7 +76,7 @@ contract ProductIdentification {
     }
 
     function productExist(bytes4 _id) public view returns (bool) {
-        require(supplierIsRegistered(), "Supplier is not registered");
+        // require(supplierIsRegistered(), "Supplier is not registered");
 
         for (uint i = 0; i < products.length; i++) {
             if (products[i].id == _id) {
@@ -88,7 +88,7 @@ contract ProductIdentification {
     }
 
     function getProductInformation(bytes4 _id) external view returns (bytes4, string memory, uint, address) {
-        require(supplierIsRegistered(), "Supplier is not registered");
+        // require(supplierIsRegistered(), "Supplier is not registered");
         require(productExist(_id), "Product doesn't exist");
 
         for (uint i = 0; i < products.length; i++) {
