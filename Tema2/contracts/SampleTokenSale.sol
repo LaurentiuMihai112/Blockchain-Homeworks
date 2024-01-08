@@ -19,24 +19,24 @@ contract SampleTokenSale {
         tokenPrice = _tokenPrice;
     }
 
-function buyTokens(uint256 _numberOfTokens) public payable {
-    uint256 totalCost = _numberOfTokens * tokenPrice;
+    function buyTokens(uint256 _numberOfTokens) public payable {
+        uint256 totalCost = _numberOfTokens * tokenPrice;
 
-    require(_numberOfTokens > 0, "Number of tokens must be greater than zero");
-    require(msg.value >= totalCost, "Insufficient funds sent");
-    require(tokenContract.allowance(owner, address(this)) >= _numberOfTokens, "Not enough allowance");
-    require(tokenContract.transferFrom(owner, msg.sender, _numberOfTokens), "Token transfer failed");
+        require(_numberOfTokens > 0, "Number of tokens must be greater than zero");
+        require(msg.value >= totalCost, "Insufficient funds sent");
+        require(tokenContract.allowance(owner, address(this)) >= _numberOfTokens, "Not enough allowance");
+        require(tokenContract.transferFrom(owner, msg.sender, _numberOfTokens), "Token transfer failed");
 
-    tokensSold += _numberOfTokens;
-    uint256 refundAmount = msg.value - totalCost;
+        tokensSold += _numberOfTokens;
+        uint256 refundAmount = msg.value - totalCost;
 
-    emit Sell(msg.sender, _numberOfTokens);
+        emit Sell(msg.sender, _numberOfTokens);
 
-    // Return the excess funds to the buyer
-    if (refundAmount > 0) {
-        payable(msg.sender).transfer(refundAmount);
+        // Return the excess funds to the buyer
+        if (refundAmount > 0) {
+            payable(msg.sender).transfer(refundAmount);
     }
-}
+    }
 
     function endSale() public {
         require(

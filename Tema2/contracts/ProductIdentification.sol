@@ -15,8 +15,7 @@ contract ProductIdentification {
 
     struct Product {
         bytes4 id;
-        string name;
-        uint256 volume;
+        string brand;
         address owner;
     }
 
@@ -41,13 +40,13 @@ contract ProductIdentification {
         suppliers[msg.sender] = true;
     }
 
-    function registerProduct(string memory _name, uint256 _amount) public returns (bytes4){
+    function registerProduct(string memory _name) public returns (bytes4){
         require(supplierIsRegistered(msg.sender), "Supplier is not registered");
 
         bytes4 _id = bytes4(keccak256(abi.encodePacked(msg.sender, _name)));
-        require(!productExist(_id), "Product is already registered");
+        require(!productExists(_id), "Product is already registered");
 
-        products[_id] = Product(_id, _name, _amount, msg.sender);
+        products[_id] = Product(_id, _name, msg.sender);
 
         return _id;
     }
@@ -57,13 +56,13 @@ contract ProductIdentification {
         return suppliers[_supplier];
     }
 
-    function productExist(bytes4 _id) public view returns (bool) {
+    function productExists(bytes4 _id) public view returns (bool) {
         return products[_id].owner != address(0);
     }
 
     function getProductInformation(bytes4 _id) external view returns (Product memory)
     {
-        require(productExist(_id), "Product doesn't exist");
+        require(productExists(_id), "Product doesn't exist");
         return products[_id];
     }
 }
