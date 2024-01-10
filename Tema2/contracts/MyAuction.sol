@@ -44,23 +44,71 @@ contract MyAuction is Auction {
         return true;
     }
 
+    function get_owner() public view returns(address) {
+        return auction_owner;
+    }
+
     function finalizeAuction() external only_owner returns (bool) {
         require(block.timestamp > auction_end || STATE == auction_state.CANCELLED, "Auction is still open");
 
         if (highestBid > 0) {
-            require(tokenContract.transfer(auction_owner, highestBid), "Token transfer to owner failed");
+            require(tokenContract.transferFrom(address(this), auction_owner, highestBid), "Token transfer to owner failed");
         }
 
         for (uint256 i = 0; i < bidders.length; i++) {
             if (bidders[i] != highestBidder) {
                 uint256 refundAmount = bids[bidders[i]];
                 if (refundAmount > 0) {
-                    require(tokenContract.transfer(bidders[i], refundAmount), "Token refund to bidder failed");
+                    require(tokenContract.transferFrom(address(this), bidders[i], refundAmount), "Token refund to bidder failed");
                 }
             }
         }
 
         selfdestruct(auction_owner);
         return true;
+    }
+
+
+
+    
+    function withdraw() public override returns (bool) {
+        
+        require(block.timestamp > auction_end || STATE == auction_state.CANCELLED,"You can't withdraw, the auction is still open");
+
+        uint amount = bids[msg.sender];
+        bids[msg.sender] = 0;
+        
+        require(tokenContract.transferFrom(address(this), msg.sender, amount), "Token withdrawal failed");
+        emit WithdrawalEvent(msg.sender, amount);
+        return true;
+      
+    }
+
+    function cancel_auction() external only_owner an_ongoing_auction override returns (bool) {
+    
+        STATE = auction_state.CANCELLED;
+        emit CanceledEvent("Auction Cancelled", block.timestamp);
+        return true;
+    }
+    
+    function destruct_auction() external only_owner returns (bool) {
+        
+        require(block.timestamp > auction_end || STATE == auction_state.CANCELLED,"You can't destruct the contract,The auction is still open");
+        for(uint i = 0; i < bidders.length; i++)
+        {
+            assert(bids[bidders[i]] == 0);
+        }
+
+        selfdestruct(auction_owner);
+        return true;
+    
+    }
+    
+    fallback () external payable {
+        
+    }
+    
+    receive () external payable {
+        
     }
 }

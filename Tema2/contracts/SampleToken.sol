@@ -2,29 +2,24 @@
 
 pragma solidity ^0.8.0;
 
-contract SampleToken {
+import "./IERC20.sol";
+
+contract SampleToken is IERC20{
     string public name = "Sample Token";
     string public symbol = "TOK";
     uint8 public decimals = 18;
-
     uint256 public totalSupply;
-
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
-
-    event Approval(
-        address indexed _owner,
-        address indexed _spender,
-        uint256 _value
-    );
-
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
+
+
 
     constructor(uint256 _initialSupply) {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
         emit Transfer(address(0), msg.sender, totalSupply);
     }
+
 
     function transfer(address _to, uint256 _value) public returns (bool success)
     {
@@ -59,4 +54,6 @@ contract SampleToken {
 
         return true;
     }
+
+    
 }

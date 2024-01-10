@@ -35,7 +35,7 @@ contract SampleTokenSale {
         // Return the excess funds to the buyer
         if (refundAmount > 0) {
             payable(msg.sender).transfer(refundAmount);
-    }
+        }
     }
 
     function endSale() public {
@@ -51,6 +51,7 @@ contract SampleTokenSale {
 
     function setTokenPrice(uint256 _newPrice) public {
         require(msg.sender == owner, "Only the owner can set the token price");
+         require(_newPrice > 0, "New token price must be greater than zero");
         tokenPrice = _newPrice;
     }
 }
