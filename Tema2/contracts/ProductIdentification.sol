@@ -9,6 +9,7 @@ contract ProductIdentification {
     
     mapping(address => bool) public suppliers;
     mapping(bytes4 => Product) public products;
+    mapping(string => bool) public brands;
     uint256 public registrationFee;
 
     SampleToken public token;  // Reference to your custom token contract
@@ -40,13 +41,14 @@ contract ProductIdentification {
         suppliers[msg.sender] = true;
     }
 
-    function registerProduct(string memory _name) public returns (bytes4){
+    function registerProduct(string memory _brand) public returns (bytes4){
         require(supplierIsRegistered(msg.sender), "Supplier is not registered");
 
-        bytes4 _id = bytes4(keccak256(abi.encodePacked(msg.sender, _name)));
+        bytes4 _id = bytes4(keccak256(abi.encodePacked(msg.sender, _brand)));
         require(!productExists(_id), "Product is already registered");
 
-        products[_id] = Product(_id, _name, msg.sender);
+        brands[_brand] = true;
+        products[_id] = Product(_id, _brand, msg.sender);
 
         return _id;
     }
@@ -58,6 +60,10 @@ contract ProductIdentification {
 
     function productExists(bytes4 _id) public view returns (bool) {
         return products[_id].owner != address(0);
+    }
+
+    function brandExists(string memory _brand) public view returns (bool) {
+        return brands[_brand] == true;
     }
 
     function getProductInformation(bytes4 _id) external view returns (Product memory)

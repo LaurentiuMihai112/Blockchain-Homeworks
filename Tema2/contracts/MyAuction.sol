@@ -15,7 +15,7 @@ contract MyAuction is Auction {
 
     constructor( address _contractAddress, uint256 _biddingTime, address payable _owner, string memory _brand, string memory _Rnumber, address _tokenContractAddress) {
         productIdentification = ProductIdentification(_contractAddress);
-        require(productIdentification.productExists(_brand), "Car brand is not registered as a product");
+        require(productIdentification.brandExists(_brand), "Car brand is not registered as a product");
         require(!auctionStarted, "Auction already started");
 
         auction_owner = _owner;
@@ -31,8 +31,8 @@ contract MyAuction is Auction {
 
     function bid(uint256 _tokenAmount) public an_ongoing_auction override returns (bool) {
         require(!hasBid[msg.sender], "You can only bid once");
-        require(tokenContract.transferFrom(msg.sender, address(this), _tokenAmount), "Token transfer failed");
         require(bids[msg.sender] + _tokenAmount > highestBid, "You can't bid, Make a higher Bid");
+        require(tokenContract.transferFrom(msg.sender, address(this), _tokenAmount), "Token transfer failed");
 
         hasBid[msg.sender] = true;
         highestBidder = msg.sender;
